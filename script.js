@@ -50,7 +50,6 @@ const translations = {
   en: {
     "nav.about": "About",
     "nav.projects": "Projects",
-    "nav.contact": "Contact",
     "projects.title": "Projects",
     "projects.pokeclicker.description":
       "Full-stack Pokemon clicker game with GraphQL API, MongoDB backend, comprehensive unit and E2E testing, and custom canvas-based map collision detection.",
@@ -65,15 +64,11 @@ const translations = {
       "Built full-stack web applications using React, TypeScript, and GraphQL. Worked with MongoDB and PostgreSQL, written tests with Vitest and Playwright.",
     "about.learning.label": "Currently Learning",
     "about.learning.value": "The Odin Project (JavaScript)",
-    "contact.title": "Get In Touch",
-    "contact.text": "I'm always open to new opportunities and collaborations.",
-    "contact.button": "Say Hello",
     "footer.rights": "All rights reserved.",
   },
   no: {
     "nav.about": "Om",
     "nav.projects": "Prosjekter",
-    "nav.contact": "Kontakt",
     "projects.title": "Prosjekter",
     "projects.pokeclicker.description":
       "Fullstack Pokemon-klikkespill med GraphQL API, MongoDB backend, omfattende enhets- og E2E-testing, og tilpasset canvas-basert kollisjonsdeteksjon for kart.",
@@ -87,9 +82,6 @@ const translations = {
       "Har laget fullstack-webapplikasjoner med React, TypeScript og GraphQL. Jobbet med MongoDB og PostgreSQL, skrevet tester med Vitest og Playwright.",
     "about.learning.label": "Lærer nå",
     "about.learning.value": "The Odin Project (JavaScript)",
-    "contact.title": "Kontakt",
-    "contact.text": "Alltid åpen for nye muligheter og samarbeid.",
-    "contact.button": "Send melding",
     "footer.rights": "Alle rettigheter reservert.",
   },
 };
@@ -162,6 +154,13 @@ function setNavHeight() {
   const height = nav.offsetHeight;
   document.documentElement.style.setProperty("--nav-height", height + "px");
 }
+
+setNavHeight();
+window.scrollTo(0, 0);
+
+setTimeout(() => {
+  document.documentElement.style.scrollBehavior = 'smooth';
+}, 100);
 
 window.addEventListener("load", setNavHeight);
 window.addEventListener("resize", setNavHeight);

@@ -95,7 +95,7 @@ button:focus-visible {
   font-size: 0.95rem;
   transition: color 0.2s ease;
   display: inline-block;
-  min-width: 4rem;
+  width: 6rem;
   text-align: center;
 }
 
@@ -152,7 +152,7 @@ html[data-theme="dark"] .moon-icon {
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.5px;
-  min-width: 3rem;
+  width: 3rem;
 }
 
 .lang-toggle:hover {
@@ -201,6 +201,7 @@ html[data-theme="dark"] .moon-icon {
   margin-bottom: max(2vh, 1.5rem);
   letter-spacing: -1px;
   text-align: center;
+  width: 100%;
 }
 
 .about-content {
@@ -239,6 +240,8 @@ html[data-theme="dark"] .moon-icon {
   padding: 2rem 0;
   margin-top: 2rem;
   scrollbar-width: thin;
+  width: 100%;
+  align-self: stretch;
 }
 
 .project-grid::-webkit-scrollbar {
@@ -263,12 +266,13 @@ html[data-theme="dark"] .moon-icon {
   background-color: var(--background);
   border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden;
-  text-decoration: none;
+  overflow-y: auto;
   color: inherit;
   transition: all 0.3s ease;
-  display: block;
+  display: grid;
+  grid-template-rows: 180px auto auto;
   flex: 0 0 300px;
+  max-height: calc(100vh - var(--nav-height) - 10vh);
   scroll-snap-align: center;
 }
 
@@ -280,7 +284,7 @@ html[data-theme="dark"] .moon-icon {
 
 .project-image {
   width: 100%;
-  height: 250px;
+  height: 100%;
   overflow: hidden;
   background-color: var(--background-alt);
   display: flex;
@@ -295,7 +299,7 @@ html[data-theme="dark"] .moon-icon {
 }
 
 .project-content {
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .project-title {
@@ -307,35 +311,95 @@ html[data-theme="dark"] .moon-icon {
 
 .project-description {
   color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 0.95rem;
+  line-height: 1.5;
+  font-size: 0.85rem;
 }
 
-.contact-text {
-  text-align: center;
-  font-size: 1.125rem;
+.project-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  gap: 1rem;
+}
+
+.project-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
   color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto 2rem;
 }
 
-.contact-button {
+.project-link-icon:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.project-link-icon img {
+  width: 20px;
+  height: 20px;
   display: block;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 1rem 2.5rem;
+}
+
+.project-link-demo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: var(--accent);
   color: white;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 4px;
+  font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.contact-button:hover {
+.project-link-demo:hover {
   background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.project-link-demo img {
+  width: 16px;
+  height: 16px;
+  display: block;
+  filter: invert(1);
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: max(3vh, 2rem);
+}
+
+.contact-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+}
+
+.contact-icon-link:hover {
+  border-color: var(--accent);
+  background-color: var(--background-alt);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon-link img {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .footer {
@@ -366,6 +430,17 @@ html[data-theme="dark"] .moon-icon {
 
   .project-card {
     flex: 0 0 400px;
+    height: 580px;
+    grid-template-rows: 250px auto auto;
+  }
+
+  .project-content {
+    padding: 1.5rem;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 }
 
@@ -391,16 +466,26 @@ html[data-theme="dark"] .project-card:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-html[data-theme="dark"] .contact-button {
+html[data-theme="dark"] .project-link-demo {
   background-color: var(--accent);
   color: #1a1a1a;
 }
 
-html[data-theme="dark"] .contact-button:hover {
+html[data-theme="dark"] .project-link-demo:hover {
   background-color: #e5e5e5;
 }
 
-html[data-theme="dark"] .theme-toggle img {
+html[data-theme="dark"] .project-link-demo img {
+  filter: invert(0);
+}
+
+html[data-theme="dark"] .contact-icon-link:hover {
+  background-color: #242424;
+}
+
+html[data-theme="dark"] .theme-toggle img,
+html[data-theme="dark"] .project-link-icon img,
+html[data-theme="dark"] .contact-icon-link img {
   filter: invert(1);
 }
 

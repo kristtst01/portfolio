@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: auto;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,9 +26,8 @@
         <a href="#" class="logo">Kristian Tufte Sterud</a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="#about" data-i18n="nav.about">About</a></li>
             <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
           </ul>
           <button
             id="theme-toggle"
@@ -54,12 +53,7 @@
         <div class="container">
           <h2 class="section-title" data-i18n="projects.title">Projects</h2>
           <div class="project-grid">
-            <a
-              href="https://pokeclicker.no/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card"
-            >
+            <div class="project-card">
               <div class="project-image">
                 <img
                   src="img/pokeclicker.png"
@@ -75,18 +69,32 @@
                   class="project-description"
                   data-i18n="projects.pokeclicker.description"
                 >
-                  An interactive Pokemon-themed clicking game with progression
-                  mechanics.
+                  Full-stack Pokemon clicker game with GraphQL API, MongoDB backend, comprehensive unit and E2E testing, and custom canvas-based map collision detection.
                 </p>
               </div>
-            </a>
+              <div class="project-links">
+                <a
+                  href="https://github.com/kristtst01/pokeclicker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link-icon"
+                  aria-label="View PokeClicker on GitHub"
+                >
+                  <img src="icons/github.svg" alt="" />
+                </a>
+                <a
+                  href="https://pokeclicker.no/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link-demo"
+                >
+                  <span>Live Demo</span>
+                  <img src="icons/external-link.svg" alt="" />
+                </a>
+              </div>
+            </div>
 
-            <a
-              href="https://dinder-mu.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card"
-            >
+            <div class="project-card">
               <div class="project-image">
                 <img
                   src="img/dinder.png"
@@ -102,11 +110,30 @@
                   class="project-description"
                   data-i18n="projects.dinder.description"
                 >
-                  A modern web application for discovering and exploring
-                  content.
+                  Recipe sharing platform with user authentication, real-time updates, and drag-and-drop recipe organization. Built with React, Supabase, and TanStack Query.
                 </p>
               </div>
-            </a>
+              <div class="project-links">
+                <a
+                  href="https://github.com/kristtst01/dinder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link-icon"
+                  aria-label="View Dinder on GitHub"
+                >
+                  <img src="icons/github.svg" alt="" />
+                </a>
+                <a
+                  href="https://dinder-mu.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link-demo"
+                >
+                  <span>Live Demo</span>
+                  <img src="icons/external-link.svg" alt="" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -144,21 +171,34 @@
               </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section id="contact" class="section">
-        <div class="container">
-          <h2 class="section-title" data-i18n="contact.title">Get In Touch</h2>
-          <p class="contact-text" data-i18n="contact.text">
-            I'm always open to new opportunities and collaborations.
-          </p>
-          <a
-            href="mailto:your.email@example.com"
-            class="contact-button"
-            data-i18n="contact.button"
-            >Say Hello</a
-          >
+          <div class="contact-links">
+            <a
+              href="mailto:ksterud@protonmail.com"
+              class="contact-icon-link"
+              aria-label="Send email to ksterud@protonmail.com"
+            >
+              <img src="icons/mail.svg" alt="" />
+            </a>
+            <a
+              href="https://github.com/kristtst01"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-icon-link"
+              aria-label="View GitHub profile"
+            >
+              <img src="icons/github.svg" alt="" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kristian-tufte-sterud-21ba67316/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-icon-link"
+              aria-label="View LinkedIn profile"
+            >
+              <img src="icons/linkedin.svg" alt="" />
+            </a>
+          </div>
         </div>
       </section>
     </main>
