@@ -64,6 +64,7 @@ const translations = {
       "Built full-stack web applications using React, TypeScript, and GraphQL. Worked with MongoDB and PostgreSQL, written tests with Vitest and Playwright.",
     "about.learning.label": "Currently Learning",
     "about.learning.value": "The Odin Project (JavaScript)",
+    "contact.title": "Contact Me",
     "footer.rights": "All rights reserved.",
   },
   no: {
@@ -82,6 +83,7 @@ const translations = {
       "Har laget fullstack-webapplikasjoner med React, TypeScript og GraphQL. Jobbet med MongoDB og PostgreSQL, skrevet tester med Vitest og Playwright.",
     "about.learning.label": "Lærer nå",
     "about.learning.value": "The Odin Project (JavaScript)",
+    "contact.title": "Kontakt meg",
     "footer.rights": "Alle rettigheter reservert.",
   },
 };
