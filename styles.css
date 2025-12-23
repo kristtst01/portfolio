@@ -17,7 +17,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-snap-type: y mandatory;
   scroll-padding-top: var(--nav-height);
   overscroll-behavior: none;
@@ -79,7 +79,6 @@ button:focus-visible {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--accent);
-  text-decoration: none;
   letter-spacing: -0.5px;
 }
 
@@ -504,16 +503,4 @@ html[data-theme="dark"] .theme-toggle img,
 html[data-theme="dark"] .project-link-icon img,
 html[data-theme="dark"] .contact-icon-link img {
   filter: invert(1);
-}
-
-html[data-theme="dark"] .project-grid::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-html[data-theme="dark"] .project-grid::-webkit-scrollbar-thumb {
-  background: #444;
-}
-
-html[data-theme="dark"] .project-grid::-webkit-scrollbar-thumb:hover {
-  background: #666;
 }
