@@ -164,3 +164,21 @@ setTimeout(() => {
 
 window.addEventListener("load", setNavHeight);
 window.addEventListener("resize", setNavHeight);
+
+// Project carousel pagination counter
+const projectGrid = document.querySelector(".project-grid");
+const paginationCounter = document.querySelector(".pagination-counter");
+
+if (projectGrid && paginationCounter) {
+  const projectCards = document.querySelectorAll(".project-card");
+  const totalCards = projectCards.length;
+
+  // Update counter based on scroll position
+  projectGrid.addEventListener("scroll", () => {
+    const scrollLeft = projectGrid.scrollLeft;
+    const cardWidth = 300; // Mobile card width
+    const gap = 32; // 2rem gap
+    const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
+    paginationCounter.textContent = `${currentIndex + 1} / ${totalCards}`;
+  });
+}

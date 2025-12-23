@@ -193,6 +193,9 @@ html[data-theme="dark"] .moon-icon {
 
 .section-alt {
   background-color: var(--background-alt);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .section-title {
@@ -237,29 +240,28 @@ html[data-theme="dark"] .moon-icon {
   gap: 2rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 2rem 0;
+  padding: 2rem max(1rem, calc((100vw - 330px) / 2));
   margin-top: 2rem;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   width: 100%;
   align-self: stretch;
+  overscroll-behavior-x: contain;
 }
 
 .project-grid::-webkit-scrollbar {
-  height: 8px;
+  display: none;
 }
 
-.project-grid::-webkit-scrollbar-track {
-  background: var(--background-alt);
-  border-radius: 4px;
+.project-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
-.project-grid::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
-
-.project-grid::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
+.pagination-counter {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .project-card {
@@ -274,6 +276,7 @@ html[data-theme="dark"] .moon-icon {
   flex: 0 0 300px;
   max-height: calc(100vh - var(--nav-height) - 10vh);
   scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
 .project-card:hover {
@@ -372,11 +375,17 @@ html[data-theme="dark"] .moon-icon {
   filter: invert(1);
 }
 
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .contact-links {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: max(3vh, 2rem);
+  gap: 3.5rem;
 }
 
 .contact-icon-link {
@@ -397,8 +406,8 @@ html[data-theme="dark"] .moon-icon {
 }
 
 .contact-icon-link img {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: block;
 }
 
@@ -426,6 +435,14 @@ html[data-theme="dark"] .moon-icon {
 
   .nav-links {
     gap: 2rem;
+  }
+
+  .project-grid {
+    padding: 2rem 0;
+  }
+
+  .project-pagination {
+    display: none;
   }
 
   .project-card {
