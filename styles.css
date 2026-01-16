@@ -186,8 +186,8 @@ html[data-theme="dark"] .moon-icon {
 
 #projects {
   justify-content: flex-start;
-  padding: 2rem 0;
-  padding-top: max(2rem, calc((100vh - 700px) * 0.15));
+  padding-bottom: 2rem;
+  padding-top: clamp(0rem, calc((100vh - 500px) * 0.1), 5rem);
 }
 
 #projects .container {
@@ -204,7 +204,7 @@ html[data-theme="dark"] .moon-icon {
 .section-title {
   font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 700;
-  margin-bottom: clamp(0.5rem, calc((100vh - 500px) * 0.035), 2.5rem);
+  margin-bottom: clamp(0rem, calc((100vh - 500px) * 0.035), 2.5rem);
   letter-spacing: -1px;
   text-align: center;
   width: 100%;
@@ -243,8 +243,11 @@ html[data-theme="dark"] .moon-icon {
   gap: 2rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 2rem max(1rem, calc((100vw - 330px) / 2));
-  margin-top: clamp(0.25rem, calc((100vh - 500px) * 0.025), 1.5rem);
+  padding-top: clamp(0rem, calc((100vh - 500px) * 0.025), 2rem);
+  padding-bottom: 2rem;
+  padding-left: max(1rem, calc((100vw - 330px) / 2));
+  padding-right: max(1rem, calc((100vw - 330px) / 2));
+  margin-top: clamp(0rem, calc((100vh - 500px) * 0.05), 1rem);
   scrollbar-width: none;
   width: 100%;
   align-self: stretch;
@@ -318,6 +321,11 @@ html[data-theme="dark"] .moon-icon {
   color: var(--text-secondary);
   line-height: 1.5;
   font-size: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .project-links {
@@ -430,21 +438,11 @@ html[data-theme="dark"] .moon-icon {
   .section {
     padding: 1.5rem 0;
   }
-
-  #projects {
-    padding: 1rem 0;
-    padding-top: 1rem;
-  }
 }
 
 @media (max-height: 600px) {
   .section {
     padding: 1rem 0;
-  }
-
-  #projects {
-    padding: 0.5rem 0;
-    padding-top: 0.5rem;
   }
 }
 
@@ -465,8 +463,22 @@ html[data-theme="dark"] .moon-icon {
     -webkit-overflow-scrolling: touch;
   }
 
-  #projects {
-    padding: 1.5rem 0;
+  .project-description {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+}
+
+/* Very narrow screens */
+@media (max-width: 400px) {
+  .project-card {
+    flex: 0 0 280px;
+  }
+
+  .project-description {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    font-size: 0.8rem;
   }
 }
 
@@ -486,7 +498,8 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-grid {
-    padding: 2rem 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .project-pagination {
