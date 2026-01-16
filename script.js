@@ -178,9 +178,52 @@ if (projectGrid && paginationCounter) {
   // Update counter based on scroll position
   projectGrid.addEventListener("scroll", () => {
     const scrollLeft = projectGrid.scrollLeft;
-    const cardWidth = 300; // Mobile card width
+    const cardWidth = projectCards[0]?.offsetWidth || 300;
     const gap = 32; // 2rem gap
     const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
     paginationCounter.textContent = `${currentIndex + 1} / ${totalCards}`;
   });
 }
+
+// Dynamic project card sizing to make the last card always barely overlapped
+function calculateCardWidth() {
+  if (!projectGrid) return;
+
+  const projectCards = document.querySelectorAll(".project-card");
+  if (projectCards.length === 0) return;
+
+  // Only apply on desktop (tablet and up)
+  if (window.innerWidth < 769) {
+    projectCards.forEach(card => card.style.flexBasis = '');
+    return;
+  }
+
+  const containerWidth = projectGrid.offsetWidth;
+  const gap = 32; // 2rem in px
+  const partialCardWidth = 80; // Show this much of the next card
+  const minCardWidth = 300;
+  const maxCardWidth = 420;
+
+  // Try different numbers of full cards and pick the best fit
+  let bestCardWidth = maxCardWidth;
+
+  for (let numCards = 2; numCards <= 6; numCards++) {
+    // Calculate what card width would be needed for numCards full cards + partial
+    const availableForCards = containerWidth - partialCardWidth - (gap * numCards);
+    const cardWidth = availableForCards / numCards;
+
+    if (cardWidth >= minCardWidth && cardWidth <= maxCardWidth) {
+      bestCardWidth = Math.floor(cardWidth);
+      break;
+    }
+  }
+
+  // Apply the calculated width
+  projectCards.forEach(card => {
+    card.style.flexBasis = `${bestCardWidth}px`;
+  });
+}
+
+// Run on load and resize
+calculateCardWidth();
+window.addEventListener("resize", calculateCardWidth);
