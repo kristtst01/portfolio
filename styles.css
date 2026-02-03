@@ -238,6 +238,54 @@ html[data-theme="dark"] .moon-icon {
   margin: 0;
 }
 
+.project-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: calc(50% + clamp(0rem, calc((100vh - 500px) * 0.0375), 1.5rem));
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  padding-bottom: 8px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 2.5rem;
+  line-height: 0;
+  color: var(--text-primary);
+  font-weight: 300;
+}
+
+.project-carousel-wrapper:hover .carousel-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel-arrow--prev {
+  left: 1rem;
+}
+
+.carousel-arrow--next {
+  right: 1rem;
+}
+
+.carousel-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.05);
+}
+
 .project-grid {
   display: flex;
   gap: 2rem;
@@ -273,38 +321,13 @@ html[data-theme="dark"] .moon-icon {
 .project-pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .pagination-counter {
   color: var(--text-secondary);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  min-width: 3rem;
-  text-align: center;
-}
-
-.pagination-arrow {
-  background: none;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1;
-}
-
-.pagination-arrow:hover {
-  background-color: var(--background-alt);
-  border-color: var(--accent);
-  color: var(--accent);
 }
 
 .project-card {
@@ -315,7 +338,7 @@ html[data-theme="dark"] .moon-icon {
   color: inherit;
   transition: all 0.3s ease;
   display: grid;
-  grid-template-rows: 180px auto auto;
+  grid-template-rows: 180px 1fr auto;
   flex: 0 0 300px;
   max-height: 500px;
   scroll-snap-align: center;
@@ -343,6 +366,28 @@ html[data-theme="dark"] .moon-icon {
   object-fit: cover;
 }
 
+/* Temporary styling for WIP projects where I'm missing images */
+
+.project-image--placeholder {
+  position: relative;
+  background-color: grey;
+}
+
+.project-image--placeholder::after {
+  content: "WIP";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: black;
+  opacity: 0.3;
+  letter-spacing: 0.5rem;
+}
+
+/* ================================== */
+
 .project-content {
   padding: 1rem;
 }
@@ -358,11 +403,6 @@ html[data-theme="dark"] .moon-icon {
   color: var(--text-secondary);
   line-height: 1.5;
   font-size: 0.85rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .project-links {
@@ -500,9 +540,8 @@ html[data-theme="dark"] .moon-icon {
     -webkit-overflow-scrolling: touch;
   }
 
-  .project-description {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+  .carousel-arrow {
+    display: none;
   }
 }
 
@@ -547,7 +586,7 @@ html[data-theme="dark"] .moon-icon {
   .project-card {
     /* Width controlled by JS */
     max-height: 520px;
-    grid-template-rows: 200px auto auto;
+    grid-template-rows: 200px 1fr auto;
   }
 
   .project-content {
@@ -564,7 +603,7 @@ html[data-theme="dark"] .moon-icon {
 @media (min-height: 1000px) {
   .project-card {
     max-height: 750px;
-    grid-template-rows: 230px auto auto;
+    grid-template-rows: 230px 1fr auto;
   }
 
   .project-content {
@@ -583,7 +622,7 @@ html[data-theme="dark"] .moon-icon {
 @media (min-height: 1200px) {
   .project-card {
     max-height: 900px;
-    grid-template-rows: 260px auto auto;
+    grid-template-rows: 260px 1fr auto;
   }
 
   .project-content {
@@ -642,4 +681,13 @@ html[data-theme="dark"] .theme-toggle img,
 html[data-theme="dark"] .project-link-icon img,
 html[data-theme="dark"] .contact-icon-link img {
   filter: invert(1);
+}
+
+html[data-theme="dark"] .carousel-arrow {
+  background: rgba(26, 26, 26, 0.9);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .carousel-arrow:hover {
+  background: rgba(26, 26, 26, 1);
 }

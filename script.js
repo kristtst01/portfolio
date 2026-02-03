@@ -58,9 +58,9 @@ const translations = {
     "projects.codetrace.description":
       "Algorithm visualization website with interactive step-by-step execution. Features common sorting and searching algorithms.",
     "projects.project4.description":
-      "Description of project 4 goes here. This is a placeholder for your next project.",
+      "CO₂ calculator for subcontractors in the norwegian construction sector. Made in a team of 7 as part of a school project in collaboration with Bouvet.",
     "projects.project5.description":
-      "Description of project 5 goes here. This is a placeholder for your next project.",
+      "2D online multiplayer gun-dueling game for android. Made using Java and libGDX.",
     "projects.project6.description":
       "Description of project 6 goes here. This is a placeholder for your next project.",
     "about.title": "About Me",
@@ -86,7 +86,7 @@ const translations = {
     "projects.codetrace.description":
       "Algoritmevirtualiseringsnettside med interaktiv trinn-for-trinn-kjøring. Inneholder vanlige sorterings- og søkealgoritmer.",
     "projects.project4.description":
-      "Beskrivelse av prosjekt 4 kommer her. Dette er en plassholder for ditt neste prosjekt.",
+      "CO₂-kalkulator for underentreprenører i norsk byggenæring. Lagd I samarbeid med 6 andre som del av et skoleprosjekt i samarbeid med Bouvet.",
     "projects.project5.description":
       "Beskrivelse av prosjekt 5 kommer her. Dette er en plassholder for ditt neste prosjekt.",
     "projects.project6.description":
