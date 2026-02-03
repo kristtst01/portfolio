@@ -1,0 +1,40 @@
+{
+  "en": {
+    "nav.about": "About",
+    "nav.projects": "Projects",
+    "projects.title": "Projects",
+    "projects.pokeclicker.description": "Full-stack Pokemon clicker game with GraphQL API, MongoDB backend, comprehensive unit and E2E testing, and custom canvas-based map collision detection.",
+    "projects.dinder.description": "Recipe sharing platform with user authentication, real-time updates, and drag-and-drop recipe organization. Built with React, Supabase, and TanStack Query.",
+    "projects.codetrace.description": "Algorithm visualization website with interactive step-by-step execution. Features common sorting and searching algorithms.",
+    "projects.project4.description": "CO₂ calculator for subcontractors in the norwegian construction sector. Made in a team of 7 as part of a school project in collaboration with Bouvet.",
+    "projects.project5.description": "2D online multiplayer gun dueling/gunslinger game for android. Made using Java and libGDX.",
+    "projects.project6.description": "Responsive portfolio website with dark mode, bilingual support (EN/NO), and project carousel. Vanilla JS and CSS.",
+    "about.title": "About Me",
+    "about.intro": "Final-year informatics student at NTNU. I build web applications with focus on intuitive interfaces and clean system design. I've made projects ranging from Pokemon clicker games to recipe platforms, and tend to get absorbed when solving problems properly. Currently seeking my first developer role. When I'm not coding, I play classical piano.",
+    "about.education.label": "Education",
+    "about.education.value": "Bachelor in Informatics, NTNU\nGraduating Spring 2026 (Current GPA: 4.3/5.0)",
+    "about.learning.label": "Currently Learning",
+    "about.learning.value": "The Odin Project (JavaScript)",
+    "contact.title": "Contact and Links",
+    "footer.rights": "All rights reserved."
+  },
+  "no": {
+    "nav.about": "Om",
+    "nav.projects": "Prosjekter",
+    "projects.title": "Prosjekter",
+    "projects.pokeclicker.description": "Fullstack Pokemon-klikkespill med GraphQL API, MongoDB backend, omfattende enhets- og E2E-testing, og tilpasset canvas-basert kollisjonsdeteksjon for kart.",
+    "projects.dinder.description": "Oppskriftsdelingsplattform med brukerautentisering, sanntidsoppdateringer og dra-og-slipp organisering. Bygget med React, Supabase og TanStack Query.",
+    "projects.codetrace.description": "Algoritmevirtualiseringsnettside med interaktiv trinn-for-trinn-kjøring. Inneholder vanlige sorterings- og søkealgoritmer.",
+    "projects.project4.description": "CO₂-kalkulator for underentreprenører i norsk byggenæring. Lagd I samarbeid med 6 andre som del av et skoleprosjekt i samarbeid med Bouvet.",
+    "projects.project5.description": "2D nettbasert flerspiller gun duel/gunslinger spill for Android. Laget med Java og libGDX.",
+    "projects.project6.description": "Responsiv porteføljenettside med dark mode, EN/NO språk, prosjektkarusell. Vanilla JS og CSS.",
+    "about.title": "Om meg",
+    "about.intro": "Siste-års informatikkstudent ved NTNU. Jeg bygger webapplikasjoner med fokus på intuitive grensesnitt og ren systemdesign. Jeg har laget prosjekter fra Pokemon-klikkespill til oppskriftsplattformer, og har en tendens til å bli oppslukt når jeg løser problemer skikkelig. Søker for tiden min første utviklerstilling. Når jeg ikke koder, spiller jeg klassisk piano.",
+    "about.education.label": "Utdanning",
+    "about.education.value": "Bachelor i Informatikk, NTNU\nFerdig våren 2026 (Nåværende Snitt: 4.3/5.0)",
+    "about.learning.label": "Lærer nå",
+    "about.learning.value": "The Odin Project (JavaScript, NodeJS)",
+    "contact.title": "Kontakt og Lenker",
+    "footer.rights": "Alle rettigheter reservert."
+  }
+}

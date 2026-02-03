@@ -46,47 +46,14 @@ if (themeToggle) {
 const langToggle = document.getElementById("lang-toggle");
 const langText = document.getElementById("lang-text");
 
-const translations = {
-  en: {
-    "nav.about": "About",
-    "nav.projects": "Projects",
-    "projects.title": "Projects",
-    "projects.pokeclicker.description":
-      "Full-stack Pokemon clicker game with GraphQL API, MongoDB backend, comprehensive unit and E2E testing, and custom canvas-based map collision detection.",
-    "projects.dinder.description":
-      "Recipe sharing platform with user authentication, real-time updates, and drag-and-drop recipe organization. Built with React, Supabase, and TanStack Query.",
-    "about.title": "About Me",
-    "about.education.label": "Education",
-    "about.education.value":
-      "Bachelor in Informatics, NTNU\nGraduating Spring 2026",
-    "about.experience.label": "Experience",
-    "about.experience.value":
-      "Built full-stack web applications using React, TypeScript, and GraphQL. Worked with MongoDB and PostgreSQL, written tests with Vitest and Playwright.",
-    "about.learning.label": "Currently Learning",
-    "about.learning.value": "The Odin Project (JavaScript)",
-    "contact.title": "Contact Me",
-    "footer.rights": "All rights reserved.",
-  },
-  no: {
-    "nav.about": "Om",
-    "nav.projects": "Prosjekter",
-    "projects.title": "Prosjekter",
-    "projects.pokeclicker.description":
-      "Fullstack Pokemon-klikkespill med GraphQL API, MongoDB backend, omfattende enhets- og E2E-testing, og tilpasset canvas-basert kollisjonsdeteksjon for kart.",
-    "projects.dinder.description":
-      "Oppskriftsdelingsplattform med brukerautentisering, sanntidsoppdateringer og dra-og-slipp organisering. Bygget med React, Supabase og TanStack Query.",
-    "about.title": "Om meg",
-    "about.education.label": "Utdanning",
-    "about.education.value": "Bachelor i Informatikk, NTNU\nFerdig våren 2026",
-    "about.experience.label": "Erfaring",
-    "about.experience.value":
-      "Har laget fullstack-webapplikasjoner med React, TypeScript og GraphQL. Jobbet med MongoDB og PostgreSQL, skrevet tester med Vitest og Playwright.",
-    "about.learning.label": "Lærer nå",
-    "about.learning.value": "The Odin Project (JavaScript)",
-    "contact.title": "Kontakt meg",
-    "footer.rights": "Alle rettigheter reservert.",
-  },
-};
+let translations = {};
+
+fetch('translations.json')
+  .then(response => response.json())
+  .then(data => {
+    translations = data;
+    setLanguage(getLanguagePreference());
+  });
 
 const getLanguagePreference = () => {
   if (isLocalStorageAvailable()) {
@@ -139,8 +106,6 @@ const setLanguage = (lang) => {
   }
 };
 
-setLanguage(getLanguagePreference());
-
 if (langToggle) {
   langToggle.addEventListener("click", () => {
     const currentLang = html.getAttribute("lang");
@@ -149,7 +114,10 @@ if (langToggle) {
   });
 }
 
-// Dynamic navigation height adjustment. Kinda insane approach but the calculations were always wrong with pure CSS for some reason
+// Dynamic navigation height adjustment via JS. Not actually completely sure why,but 
+// pure CSS calc() for scroll-padding-top causes incorrect scroll offsets
+// when combined with scroll-snap, likely due to layout calculation timing during page load
+// (hence the magic timeout which fixes it). A bit hacky, but can't get it to work otherwise.
 const nav = document.querySelector(".nav");
 
 function setNavHeight() {
@@ -167,21 +135,83 @@ setTimeout(() => {
 window.addEventListener("load", setNavHeight);
 window.addEventListener("resize", setNavHeight);
 
-// Project carousel pagination counter
 const projectGrid = document.querySelector(".project-grid");
 const paginationCounter = document.querySelector(".pagination-counter");
+const prevButton = document.getElementById("prev-project");
+const nextButton = document.getElementById("next-project");
 
-if (projectGrid && paginationCounter) {
+if (projectGrid) {
   const projectCards = document.querySelectorAll(".project-card");
   const totalCards = projectCards.length;
 
-  // Update counter based on scroll position
-  projectGrid.addEventListener("scroll", () => {
-    const scrollLeft = projectGrid.scrollLeft;
-    const cardWidth = projectCards[0]?.offsetWidth || 300;
-    const gap = 32; // 2rem gap
-    const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
-    paginationCounter.textContent = `${currentIndex + 1} / ${totalCards}`;
+  const getCarouselGap = () => {
+    const gapValue = getComputedStyle(document.documentElement)
+      .getPropertyValue('--carousel-gap').trim();
+    return parseFloat(gapValue) * 16;
+  };
+
+  const getCardWidth = () => projectCards[0]?.offsetWidth || 300;
+
+  if (paginationCounter) {
+    projectGrid.addEventListener("scroll", () => {
+      const scrollLeft = projectGrid.scrollLeft;
+      const cardWidth = getCardWidth();
+      const gap = getCarouselGap();
+      const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
+      paginationCounter.textContent = `${currentIndex + 1} / ${totalCards}`;
+    });
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      const cardWidth = getCardWidth();
+      const gap = getCarouselGap();
+      projectGrid.scrollBy({
+        left: -(cardWidth + gap),
+        behavior: "smooth"
+      });
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      const cardWidth = getCardWidth();
+      const gap = getCarouselGap();
+      projectGrid.scrollBy({
+        left: cardWidth + gap,
+        behavior: "smooth"
+      });
+    });
+  }
+
+  // Click and drag functionality
+  let isDown = false;
+  let startX;
+  let scrollLeftStart;
+
+  projectGrid.addEventListener("mousedown", (e) => {
+    isDown = true;
+    projectGrid.style.cursor = "grabbing";
+    startX = e.pageX - projectGrid.offsetLeft;
+    scrollLeftStart = projectGrid.scrollLeft;
+  });
+
+  projectGrid.addEventListener("mouseleave", () => {
+    isDown = false;
+    projectGrid.style.cursor = "grab";
+  });
+
+  projectGrid.addEventListener("mouseup", () => {
+    isDown = false;
+    projectGrid.style.cursor = "grab";
+  });
+
+  projectGrid.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - projectGrid.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    projectGrid.scrollLeft = scrollLeftStart - walk;
   });
 }
 
@@ -199,7 +229,8 @@ function calculateCardWidth() {
   }
 
   const containerWidth = projectGrid.offsetWidth;
-  const gap = 32; // 2rem in px
+  const gap = parseFloat(getComputedStyle(document.documentElement)
+    .getPropertyValue('--carousel-gap')) * 16;
   const partialCardWidth = 80; // Show this much of the next card
   const minCardWidth = 300;
   const maxCardWidth = 420;

@@ -14,6 +14,18 @@
   --accent: #000000;
   --accent-hover: #333;
   --nav-height: 70px;
+  --carousel-gap: 2rem;
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 50%;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.06);
 }
 
 html {
@@ -44,7 +56,7 @@ button:focus-visible {
 
 /* Smooth language transitions */
 [data-i18n] {
-  transition: opacity 0.15s ease;
+  transition: opacity var(--transition-fast);
 }
 
 .container {
@@ -99,7 +111,7 @@ button:focus-visible {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.95rem;
-  transition: color 0.2s ease;
+  transition: color var(--transition-normal);
   display: inline-block;
   width: 6rem;
   text-align: center;
@@ -117,8 +129,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-normal);
 }
 
 .theme-toggle:hover {
@@ -152,8 +164,8 @@ html[data-theme="dark"] .moon-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
   color: var(--text-secondary);
   font-size: 0.85rem;
   font-weight: 500;
@@ -210,6 +222,15 @@ html[data-theme="dark"] .moon-icon {
   width: 100%;
 }
 
+.about-intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
 .about-content {
   display: flex;
   flex-direction: column;
@@ -238,11 +259,60 @@ html[data-theme="dark"] .moon-icon {
   margin: 0;
 }
 
+.project-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: calc(50% + clamp(0rem, calc((100vh - 500px) * 0.0375), 1.5rem));
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  width: 48px;
+  height: 48px;
+  padding-bottom: 8px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-normal);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+  font-size: 2.5rem;
+  line-height: 0;
+  color: var(--text-primary);
+  font-weight: 300;
+}
+
+.project-carousel-wrapper:hover .carousel-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel-arrow--prev {
+  left: 1rem;
+}
+
+.carousel-arrow--next {
+  right: 1rem;
+}
+
+.carousel-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.05);
+}
+
 .project-grid {
   display: flex;
-  gap: 2rem;
+  gap: var(--carousel-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   padding-top: clamp(0rem, calc((100vh - 500px) * 0.025), 2rem);
   padding-bottom: 2rem;
   padding-left: max(1rem, calc((100vw - 330px) / 2));
@@ -252,6 +322,17 @@ html[data-theme="dark"] .moon-icon {
   width: 100%;
   align-self: stretch;
   overscroll-behavior-x: contain;
+  cursor: grab;
+  user-select: none;
+}
+
+.project-grid:active {
+  cursor: grabbing;
+}
+
+.project-grid img {
+  pointer-events: none;
+  user-select: none;
 }
 
 .project-grid::-webkit-scrollbar {
@@ -273,12 +354,12 @@ html[data-theme="dark"] .moon-icon {
 .project-card {
   background-color: var(--background);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   overflow-y: auto;
   color: inherit;
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow);
   display: grid;
-  grid-template-rows: 180px auto auto;
+  grid-template-rows: 180px 1fr auto;
   flex: 0 0 300px;
   max-height: 500px;
   scroll-snap-align: center;
@@ -286,7 +367,7 @@ html[data-theme="dark"] .moon-icon {
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-md);
   border-color: var(--accent);
 }
 
@@ -306,6 +387,28 @@ html[data-theme="dark"] .moon-icon {
   object-fit: cover;
 }
 
+/* Temporary styling for WIP projects where I'm missing images */
+
+.project-image--placeholder {
+  position: relative;
+  background-color: grey;
+}
+
+.project-image--placeholder::after {
+  content: "WIP";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: black;
+  opacity: 0.3;
+  letter-spacing: 0.5rem;
+}
+
+/* ================================== */
+
 .project-content {
   padding: 1rem;
 }
@@ -321,11 +424,6 @@ html[data-theme="dark"] .moon-icon {
   color: var(--text-secondary);
   line-height: 1.5;
   font-size: 0.85rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .project-links {
@@ -343,8 +441,8 @@ html[data-theme="dark"] .moon-icon {
   justify-content: center;
   padding: 0.5rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
   color: var(--text-secondary);
 }
 
@@ -367,10 +465,10 @@ html[data-theme="dark"] .moon-icon {
   background-color: var(--accent);
   color: white;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
 }
 
 .project-link-demo:hover {
@@ -394,8 +492,11 @@ html[data-theme="dark"] .moon-icon {
 
 .contact-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 3.5rem;
+  gap: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .contact-icon-link {
@@ -404,8 +505,8 @@ html[data-theme="dark"] .moon-icon {
   justify-content: center;
   padding: 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 50%;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
   color: var(--text-secondary);
 }
 
@@ -463,9 +564,8 @@ html[data-theme="dark"] .moon-icon {
     -webkit-overflow-scrolling: touch;
   }
 
-  .project-description {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+  .carousel-arrow {
+    display: none;
   }
 }
 
@@ -476,8 +576,11 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     line-clamp: 3;
+    overflow: hidden;
     font-size: 0.8rem;
   }
 }
@@ -500,16 +603,17 @@ html[data-theme="dark"] .moon-icon {
   .project-grid {
     padding-left: 0;
     padding-right: 0;
+    scroll-snap-type: none;
   }
 
-  .project-pagination {
+  .pagination-counter {
     display: none;
   }
 
   .project-card {
     /* Width controlled by JS */
     max-height: 520px;
-    grid-template-rows: 200px auto auto;
+    grid-template-rows: 200px 1fr auto;
   }
 
   .project-content {
@@ -522,6 +626,45 @@ html[data-theme="dark"] .moon-icon {
   }
 }
 
+/* Tall screens - allow cards to grow taller with more padding */
+@media (min-height: 1000px) {
+  .project-card {
+    max-height: 750px;
+    grid-template-rows: 230px 1fr auto;
+  }
+
+  .project-content {
+    padding: 2.5rem 2rem;
+  }
+
+  .project-description {
+    line-height: 1.8;
+  }
+
+  .project-links {
+    padding: 1.75rem 2rem;
+  }
+}
+
+@media (min-height: 1200px) {
+  .project-card {
+    max-height: 900px;
+    grid-template-rows: 260px 1fr auto;
+  }
+
+  .project-content {
+    padding: 3rem 2.5rem;
+  }
+
+  .project-description {
+    line-height: 2;
+  }
+
+  .project-links {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
 html[data-theme="dark"] {
   --text-primary: #e5e5e5;
   --text-secondary: #a3a3a3;
@@ -530,6 +673,7 @@ html[data-theme="dark"] {
   --border: #333;
   --accent: #ffffff;
   --accent-hover: #e5e5e5;
+  --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme="dark"] .nav {
@@ -538,10 +682,6 @@ html[data-theme="dark"] .nav {
 
 html[data-theme="dark"] .project-card {
   background-color: #242424;
-}
-
-html[data-theme="dark"] .project-card:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme="dark"] .project-link-demo {
@@ -565,4 +705,13 @@ html[data-theme="dark"] .theme-toggle img,
 html[data-theme="dark"] .project-link-icon img,
 html[data-theme="dark"] .contact-icon-link img {
   filter: invert(1);
+}
+
+html[data-theme="dark"] .carousel-arrow {
+  background: rgba(26, 26, 26, 0.9);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .carousel-arrow:hover {
+  background: rgba(26, 26, 26, 1);
 }
