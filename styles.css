@@ -78,7 +78,7 @@ button:focus-visible {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
-  padding: 1.5rem 0;
+  padding: clamp(1.2rem, calc(1.2rem + (100vh - 750px) * 0.001), 1.5rem) 0;
 }
 
 .nav .container {
@@ -213,7 +213,7 @@ html[data-theme="dark"] .moon-icon {
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-size: clamp(2.2rem, min(5vw, calc((100vh - 750px) * 0.013 + 2.2rem)), 2.5rem);
   font-weight: 700;
   margin-bottom: clamp(0rem, calc((100vh - 750px) * 0.114), 2.5rem);
   letter-spacing: -1px;
@@ -312,6 +312,7 @@ html[data-theme="dark"] .moon-icon {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  padding-top: 0.5rem;
   padding-left: max(1rem, calc((100vw - 330px) / 2));
   padding-right: max(1rem, calc((100vw - 330px) / 2));
   scrollbar-width: none;
@@ -357,7 +358,7 @@ html[data-theme="dark"] .moon-icon {
   display: grid;
   grid-template-rows: 180px 1fr auto;
   flex: 0 0 300px;
-  max-height: 500px;
+  max-height: 480px;
   scroll-snap-align: center;
 }
 
@@ -406,13 +407,13 @@ html[data-theme="dark"] .moon-icon {
 /* ================================== */
 
 .project-content {
-  padding: 1rem;
+  padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 1rem 1rem 1rem;
 }
 
 .project-title {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: clamp(0.35rem, calc(0.35rem + (100vh - 750px) * 0.0013), 0.75rem);
   letter-spacing: -0.5px;
 }
 
@@ -613,7 +614,7 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-content {
-    padding: 1.5rem;
+    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 1.5rem 1.5rem 1.5rem;
   }
 
   .project-description {
@@ -630,7 +631,7 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-content {
-    padding: 2.5rem 2rem;
+    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2em) 2rem 2rem 2rem;
   }
 
   .project-description {
@@ -649,7 +650,7 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-content {
-    padding: 3rem 2.5rem;
+    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 2.5rem 2.5rem 2.5rem;
   }
 
   .project-description {
