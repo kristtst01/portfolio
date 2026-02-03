@@ -222,6 +222,15 @@ html[data-theme="dark"] .moon-icon {
   width: 100%;
 }
 
+.about-intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
 .about-content {
   display: flex;
   flex-direction: column;
@@ -483,8 +492,11 @@ html[data-theme="dark"] .moon-icon {
 
 .contact-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 3.5rem;
+  gap: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .contact-icon-link {
