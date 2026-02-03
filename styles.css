@@ -185,7 +185,7 @@ html[data-theme="dark"] .moon-icon {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3rem 0;
+  padding: clamp(0rem, calc((100vh - 900px) * 0.16), 3rem) 0;
 }
 
 .section .container {
@@ -198,8 +198,7 @@ html[data-theme="dark"] .moon-icon {
 
 #projects {
   justify-content: flex-start;
-  padding-bottom: 2rem;
-  padding-top: clamp(0rem, calc((100vh - 500px) * 0.1), 5rem);
+  padding: clamp(0rem, calc((100vh - 750px) * 0.133), 3rem) 0;
 }
 
 #projects .container {
@@ -214,9 +213,9 @@ html[data-theme="dark"] .moon-icon {
 }
 
 .section-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
   font-weight: 700;
-  margin-bottom: clamp(0rem, calc((100vh - 500px) * 0.035), 2.5rem);
+  margin-bottom: clamp(0rem, calc((100vh - 750px) * 0.114), 2.5rem);
   letter-spacing: -1px;
   text-align: center;
   width: 100%;
@@ -266,7 +265,7 @@ html[data-theme="dark"] .moon-icon {
 
 .carousel-arrow {
   position: absolute;
-  top: calc(50% + clamp(0rem, calc((100vh - 500px) * 0.0375), 1.5rem));
+  top: calc(50% + clamp(0rem, calc((100vh - 900px) * 0.08), 1.5rem));
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--border);
@@ -313,11 +312,8 @@ html[data-theme="dark"] .moon-icon {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding-top: clamp(0rem, calc((100vh - 500px) * 0.025), 2rem);
-  padding-bottom: 2rem;
   padding-left: max(1rem, calc((100vw - 330px) / 2));
   padding-right: max(1rem, calc((100vw - 330px) / 2));
-  margin-top: clamp(0rem, calc((100vh - 500px) * 0.05), 1rem);
   scrollbar-width: none;
   width: 100%;
   align-self: stretch;
