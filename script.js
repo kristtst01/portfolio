@@ -183,21 +183,78 @@ setTimeout(() => {
 window.addEventListener("load", setNavHeight);
 window.addEventListener("resize", setNavHeight);
 
-// Project carousel pagination counter
+// Project carousel pagination counter and navigation
 const projectGrid = document.querySelector(".project-grid");
 const paginationCounter = document.querySelector(".pagination-counter");
+const prevButton = document.getElementById("prev-project");
+const nextButton = document.getElementById("next-project");
 
-if (projectGrid && paginationCounter) {
+if (projectGrid) {
   const projectCards = document.querySelectorAll(".project-card");
   const totalCards = projectCards.length;
 
-  // Update counter based on scroll position
-  projectGrid.addEventListener("scroll", () => {
-    const scrollLeft = projectGrid.scrollLeft;
-    const cardWidth = projectCards[0]?.offsetWidth || 300;
-    const gap = 32; // 2rem gap
-    const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
-    paginationCounter.textContent = `${currentIndex + 1} / ${totalCards}`;
+  // Update counter based on scroll position (if counter exists)
+  if (paginationCounter) {
+    projectGrid.addEventListener("scroll", () => {
+      const scrollLeft = projectGrid.scrollLeft;
+      const cardWidth = projectCards[0]?.offsetWidth || 300;
+      const gap = 32; // 2rem gap
+      const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
+      paginationCounter.textContent = `${currentIndex + 1} / ${totalCards}`;
+    });
+  }
+
+  // Arrow button navigation
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      const cardWidth = projectCards[0]?.offsetWidth || 300;
+      const gap = 32;
+      projectGrid.scrollBy({
+        left: -(cardWidth + gap),
+        behavior: "smooth"
+      });
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      const cardWidth = projectCards[0]?.offsetWidth || 300;
+      const gap = 32;
+      projectGrid.scrollBy({
+        left: cardWidth + gap,
+        behavior: "smooth"
+      });
+    });
+  }
+
+  // Click and drag functionality
+  let isDown = false;
+  let startX;
+  let scrollLeftStart;
+
+  projectGrid.addEventListener("mousedown", (e) => {
+    isDown = true;
+    projectGrid.style.cursor = "grabbing";
+    startX = e.pageX - projectGrid.offsetLeft;
+    scrollLeftStart = projectGrid.scrollLeft;
+  });
+
+  projectGrid.addEventListener("mouseleave", () => {
+    isDown = false;
+    projectGrid.style.cursor = "grab";
+  });
+
+  projectGrid.addEventListener("mouseup", () => {
+    isDown = false;
+    projectGrid.style.cursor = "grab";
+  });
+
+  projectGrid.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - projectGrid.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    projectGrid.scrollLeft = scrollLeftStart - walk;
   });
 }
 
