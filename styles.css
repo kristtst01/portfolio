@@ -14,6 +14,18 @@
   --accent: #000000;
   --accent-hover: #333;
   --nav-height: 70px;
+  --carousel-gap: 2rem;
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 50%;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.06);
 }
 
 html {
@@ -44,7 +56,7 @@ button:focus-visible {
 
 /* Smooth language transitions */
 [data-i18n] {
-  transition: opacity 0.15s ease;
+  transition: opacity var(--transition-fast);
 }
 
 .container {
@@ -99,7 +111,7 @@ button:focus-visible {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.95rem;
-  transition: color 0.2s ease;
+  transition: color var(--transition-normal);
   display: inline-block;
   width: 6rem;
   text-align: center;
@@ -117,8 +129,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-normal);
 }
 
 .theme-toggle:hover {
@@ -152,8 +164,8 @@ html[data-theme="dark"] .moon-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
   color: var(--text-secondary);
   font-size: 0.85rem;
   font-weight: 500;
@@ -249,7 +261,7 @@ html[data-theme="dark"] .moon-icon {
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--border);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   width: 48px;
   height: 48px;
   padding-bottom: 8px;
@@ -257,10 +269,10 @@ html[data-theme="dark"] .moon-icon {
   place-items: center;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
   opacity: 0;
   pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   font-size: 2.5rem;
   line-height: 0;
   color: var(--text-primary);
@@ -288,7 +300,7 @@ html[data-theme="dark"] .moon-icon {
 
 .project-grid {
   display: flex;
-  gap: 2rem;
+  gap: var(--carousel-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -333,10 +345,10 @@ html[data-theme="dark"] .moon-icon {
 .project-card {
   background-color: var(--background);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   overflow-y: auto;
   color: inherit;
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow);
   display: grid;
   grid-template-rows: 180px 1fr auto;
   flex: 0 0 300px;
@@ -346,7 +358,7 @@ html[data-theme="dark"] .moon-icon {
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-md);
   border-color: var(--accent);
 }
 
@@ -420,8 +432,8 @@ html[data-theme="dark"] .moon-icon {
   justify-content: center;
   padding: 0.5rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
   color: var(--text-secondary);
 }
 
@@ -444,10 +456,10 @@ html[data-theme="dark"] .moon-icon {
   background-color: var(--accent);
   color: white;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
 }
 
 .project-link-demo:hover {
@@ -481,8 +493,8 @@ html[data-theme="dark"] .moon-icon {
   justify-content: center;
   padding: 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 50%;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
   color: var(--text-secondary);
 }
 
@@ -552,8 +564,11 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     line-clamp: 3;
+    overflow: hidden;
     font-size: 0.8rem;
   }
 }
@@ -646,6 +661,7 @@ html[data-theme="dark"] {
   --border: #333;
   --accent: #ffffff;
   --accent-hover: #e5e5e5;
+  --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme="dark"] .nav {
@@ -654,10 +670,6 @@ html[data-theme="dark"] .nav {
 
 html[data-theme="dark"] .project-card {
   background-color: #242424;
-}
-
-html[data-theme="dark"] .project-card:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme="dark"] .project-link-demo {
