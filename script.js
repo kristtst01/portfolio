@@ -55,6 +55,14 @@ const translations = {
       "Full-stack Pokemon clicker game with GraphQL API, MongoDB backend, comprehensive unit and E2E testing, and custom canvas-based map collision detection.",
     "projects.dinder.description":
       "Recipe sharing platform with user authentication, real-time updates, and drag-and-drop recipe organization. Built with React, Supabase, and TanStack Query.",
+    "projects.codetrace.description":
+      "Algorithm visualization website with interactive step-by-step execution. Features common sorting and searching algorithms.",
+    "projects.project4.description":
+      "Description of project 4 goes here. This is a placeholder for your next project.",
+    "projects.project5.description":
+      "Description of project 5 goes here. This is a placeholder for your next project.",
+    "projects.project6.description":
+      "Description of project 6 goes here. This is a placeholder for your next project.",
     "about.title": "About Me",
     "about.education.label": "Education",
     "about.education.value":
@@ -75,6 +83,14 @@ const translations = {
       "Fullstack Pokemon-klikkespill med GraphQL API, MongoDB backend, omfattende enhets- og E2E-testing, og tilpasset canvas-basert kollisjonsdeteksjon for kart.",
     "projects.dinder.description":
       "Oppskriftsdelingsplattform med brukerautentisering, sanntidsoppdateringer og dra-og-slipp organisering. Bygget med React, Supabase og TanStack Query.",
+    "projects.codetrace.description":
+      "Algoritmevirtualiseringsnettside med interaktiv trinn-for-trinn-kjøring. Inneholder vanlige sorterings- og søkealgoritmer.",
+    "projects.project4.description":
+      "Beskrivelse av prosjekt 4 kommer her. Dette er en plassholder for ditt neste prosjekt.",
+    "projects.project5.description":
+      "Beskrivelse av prosjekt 5 kommer her. Dette er en plassholder for ditt neste prosjekt.",
+    "projects.project6.description":
+      "Beskrivelse av prosjekt 6 kommer her. Dette er en plassholder for ditt neste prosjekt.",
     "about.title": "Om meg",
     "about.education.label": "Utdanning",
     "about.education.value": "Bachelor i Informatikk, NTNU\nFerdig våren 2026",

@@ -522,6 +522,45 @@ html[data-theme="dark"] .moon-icon {
   }
 }
 
+/* Tall screens - allow cards to grow taller with more padding */
+@media (min-height: 1000px) {
+  .project-card {
+    max-height: 750px;
+    grid-template-rows: 230px auto auto;
+  }
+
+  .project-content {
+    padding: 2.5rem 2rem;
+  }
+
+  .project-description {
+    line-height: 1.8;
+  }
+
+  .project-links {
+    padding: 1.75rem 2rem;
+  }
+}
+
+@media (min-height: 1200px) {
+  .project-card {
+    max-height: 900px;
+    grid-template-rows: 260px auto auto;
+  }
+
+  .project-content {
+    padding: 3rem 2.5rem;
+  }
+
+  .project-description {
+    line-height: 2;
+  }
+
+  .project-links {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
 html[data-theme="dark"] {
   --text-primary: #e5e5e5;
   --text-secondary: #a3a3a3;
