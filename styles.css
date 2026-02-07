@@ -378,6 +378,10 @@ html[data-theme="dark"] .moon-icon {
   justify-content: center;
 }
 
+.project-image picture {
+  display: contents;
+}
+
 .project-image img {
   width: 100%;
   height: 100%;
