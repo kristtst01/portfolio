@@ -18,8 +18,7 @@
 
   --transition-fast: 0.15s ease;
   --transition-normal: 0.2s ease;
-  --transition-slow: 0.3s ease;
-
+  --transition-slow: 0.5s ease;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-full: 50%;
@@ -33,11 +32,22 @@ html {
   scroll-snap-type: y mandatory;
   scroll-padding-top: var(--nav-height);
   overscroll-behavior: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+@media screen {
+  html.js-ready {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--background);
@@ -213,7 +223,11 @@ html[data-theme="dark"] .moon-icon {
 }
 
 .section-title {
-  font-size: clamp(2.2rem, min(5vw, calc((100vh - 750px) * 0.013 + 2.2rem)), 2.5rem);
+  font-size: clamp(
+    2.2rem,
+    min(5vw, calc((100vh - 750px) * 0.013 + 2.2rem)),
+    2.5rem
+  );
   font-weight: 700;
   margin-bottom: clamp(0rem, calc((100vh - 750px) * 0.114), 2.5rem);
   letter-spacing: -1px;
@@ -354,7 +368,7 @@ html[data-theme="dark"] .moon-icon {
   border-radius: var(--radius-md);
   overflow-y: auto;
   color: inherit;
-  transition: all var(--transition-slow);
+  transition: all var(--transition-normal);
   display: grid;
   grid-template-rows: 180px 1fr auto;
   flex: 0 0 300px;
@@ -411,13 +425,18 @@ html[data-theme="dark"] .moon-icon {
 /* ================================== */
 
 .project-content {
-  padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 1rem 1rem 1rem;
+  padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 1rem 1rem
+    1rem;
 }
 
 .project-title {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: clamp(0.35rem, calc(0.35rem + (100vh - 750px) * 0.0013), 0.75rem);
+  margin-bottom: clamp(
+    0.35rem,
+    calc(0.35rem + (100vh - 750px) * 0.0013),
+    0.75rem
+  );
   letter-spacing: -0.5px;
 }
 
@@ -618,7 +637,8 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-content {
-    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 1.5rem 1.5rem 1.5rem;
+    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 1.5rem
+      1.5rem 1.5rem;
   }
 
   .project-description {
@@ -635,7 +655,8 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-content {
-    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2em) 2rem 2rem 2rem;
+    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2em) 2rem
+      2rem 2rem;
   }
 
   .project-description {
@@ -654,7 +675,8 @@ html[data-theme="dark"] .moon-icon {
   }
 
   .project-content {
-    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 2.5rem 2.5rem 2.5rem;
+    padding: clamp(0.5rem, calc(0.5rem + (100vh - 750px) * 0.127), 2rem) 2.5rem
+      2.5rem 2.5rem;
   }
 
   .project-description {

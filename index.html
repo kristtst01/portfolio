@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,6 +20,20 @@
     <title>Kristian Tufte Sterud - Portfolio</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preload"
+      as="image"
+      href="img/pokeclicker.webp"
+      fetchpriority="high"
+    />
+    <script>
+      const theme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme:dark)").matches
+          ? "dark"
+          : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    </script>
   </head>
   <body>
     <nav class="nav" aria-label="Main navigation">
@@ -54,271 +68,287 @@
         <div class="container">
           <h2 class="section-title" data-i18n="projects.title">Projects</h2>
           <div class="project-carousel-wrapper">
-            <button class="carousel-arrow carousel-arrow--prev" id="prev-project" aria-label="Previous project">‹</button>
-            <button class="carousel-arrow carousel-arrow--next" id="next-project" aria-label="Next project">›</button>
-          <div class="project-grid">
-            <div class="project-card">
-              <div class="project-image">
-                <picture>
-                  <source srcset="img/pokeclicker.webp" type="image/webp">
-                  <img
-                    src="img/pokeclicker.png"
-                    alt="PokeClicker project screenshot"
-                    loading="lazy"
-                    width="400"
-                    height="250"
-                  />
-                </picture>
+            <button
+              class="carousel-arrow carousel-arrow--prev"
+              id="prev-project"
+              aria-label="Previous project"
+            >
+              ‹
+            </button>
+            <button
+              class="carousel-arrow carousel-arrow--next"
+              id="next-project"
+              aria-label="Next project"
+            >
+              ›
+            </button>
+            <div class="project-grid">
+              <div class="project-card">
+                <div class="project-image">
+                  <picture>
+                    <source srcset="img/pokeclicker.webp" type="image/webp" />
+                    <img
+                      src="img/pokeclicker.png"
+                      alt="PokeClicker project screenshot"
+                      fetchpriority="high"
+                      loading="eager"
+                      width="400"
+                      height="250"
+                    />
+                  </picture>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">PokeClicker</h3>
+                  <p
+                    class="project-description"
+                    data-i18n="projects.pokeclicker.description"
+                  >
+                    Full-stack Pokemon clicker game with GraphQL API, MongoDB
+                    backend, comprehensive unit and E2E testing, and custom
+                    canvas-based map collision detection.
+                  </p>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/kristtst01/pokeclicker"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-icon"
+                    aria-label="View PokeClicker on GitHub"
+                  >
+                    <img src="icons/github.svg" alt="" />
+                  </a>
+                  <a
+                    href="https://pokeclicker.no/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-demo"
+                  >
+                    <span>Live Demo</span>
+                    <img src="icons/external-link.svg" alt="" />
+                  </a>
+                </div>
               </div>
-              <div class="project-content">
-                <h3 class="project-title">PokeClicker</h3>
-                <p
-                  class="project-description"
-                  data-i18n="projects.pokeclicker.description"
-                >
-                  Full-stack Pokemon clicker game with GraphQL API, MongoDB
-                  backend, comprehensive unit and E2E testing, and custom
-                  canvas-based map collision detection.
-                </p>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/kristtst01/pokeclicker"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-icon"
-                  aria-label="View PokeClicker on GitHub"
-                >
-                  <img src="icons/github.svg" alt="" />
-                </a>
-                <a
-                  href="https://pokeclicker.ksterud.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-demo"
-                >
-                  <span>Live Demo</span>
-                  <img src="icons/external-link.svg" alt="" />
-                </a>
-              </div>
-            </div>
 
-            <div class="project-card">
-              <div class="project-image">
-                <picture>
-                  <source srcset="img/dinder.webp" type="image/webp">
-                  <img
-                    src="img/dinder.png"
-                    alt="Dinder project screenshot"
-                    loading="lazy"
-                    width="400"
-                    height="250"
-                  />
-                </picture>
+              <div class="project-card">
+                <div class="project-image">
+                  <picture>
+                    <source srcset="img/dinder.webp" type="image/webp" />
+                    <img
+                      src="img/dinder.png"
+                      alt="Dinder project screenshot"
+                      width="400"
+                      height="250"
+                    />
+                  </picture>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Dinder</h3>
+                  <p
+                    class="project-description"
+                    data-i18n="projects.dinder.description"
+                  >
+                    Recipe management/discovery and meal planning platform with
+                    personal cookbook, and week planner. Built with React,
+                    Supabase, and TanStack Query.
+                  </p>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/kristtst01/dinder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-icon"
+                    aria-label="View Dinder on GitHub"
+                  >
+                    <img src="icons/github.svg" alt="" />
+                  </a>
+                  <a
+                    href="https://dinder-mu.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-demo"
+                  >
+                    <span>Live Demo</span>
+                    <img src="icons/external-link.svg" alt="" />
+                  </a>
+                </div>
               </div>
-              <div class="project-content">
-                <h3 class="project-title">Dinder</h3>
-                <p
-                  class="project-description"
-                  data-i18n="projects.dinder.description"
-                >
-                  Recipe management/discovery and meal planning platform with personal cookbook, and week planner. Built with React, Supabase, and TanStack Query.
-                </p>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/kristtst01/dinder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-icon"
-                  aria-label="View Dinder on GitHub"
-                >
-                  <img src="icons/github.svg" alt="" />
-                </a>
-                <a
-                  href="https://dinder-mu.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-demo"
-                >
-                  <span>Live Demo</span>
-                  <img src="icons/external-link.svg" alt="" />
-                </a>
-              </div>
-            </div>
 
-            <div class="project-card">
-              <div class="project-image">
-                <picture>
-                  <source srcset="img/codetrace.webp" type="image/webp">
-                  <img
-                    src="img/codetrace.png"
-                    alt="CodeTrace project screenshot"
-                    loading="lazy"
-                    width="400"
-                    height="250"
-                  />
-                </picture>
+              <div class="project-card">
+                <div class="project-image">
+                  <picture>
+                    <source srcset="img/codetrace.webp" type="image/webp" />
+                    <img
+                      src="img/codetrace.png"
+                      alt="CodeTrace project screenshot"
+                      width="400"
+                      height="250"
+                    />
+                  </picture>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">CodeTrace</h3>
+                  <p
+                    class="project-description"
+                    data-i18n="projects.codetrace.description"
+                  >
+                    Algorithm visualization tool with interactive step-by-step
+                    execution. Features sorting algorithms and pathfinding
+                    algorithms.
+                  </p>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/kristtst01/codetrace"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-icon"
+                    aria-label="View CodeTrace on GitHub"
+                  >
+                    <img src="icons/github.svg" alt="" />
+                  </a>
+                  <a
+                    href="https://codetrace-steel.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-demo"
+                  >
+                    <span>Live Demo</span>
+                    <img src="icons/external-link.svg" alt="" />
+                  </a>
+                </div>
               </div>
-              <div class="project-content">
-                <h3 class="project-title">CodeTrace</h3>
-                <p
-                  class="project-description"
-                  data-i18n="projects.codetrace.description"
-                >
-                  Algorithm visualization tool with interactive step-by-step execution. Features sorting algorithms and pathfinding algorithms.
-                </p>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/kristtst01/codetrace"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-icon"
-                  aria-label="View CodeTrace on GitHub"
-                >
-                  <img src="icons/github.svg" alt="" />
-                </a>
-                <a
-                  href="https://codetrace-steel.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-demo"
-                >
-                  <span>Live Demo</span>
-                  <img src="icons/external-link.svg" alt="" />
-                </a>
-              </div>
-            </div>
 
-            <div class="project-card">
-              <div class="project-image project-image--placeholder">
-                <!-- <img
+              <div class="project-card">
+                <div class="project-image project-image--placeholder">
+                  <!-- <img
                   src="img/placeholder.png"
                   alt="Project 4 screenshot"
-                  loading="lazy"
+                  
                   width="400"
                   height="250"
                 /> -->
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">CO₂ Calculator</h3>
+                  <p
+                    class="project-description"
+                    data-i18n="projects.project4.description"
+                  >
+                    CO₂ calculator for subcontractors in the norwegian
+                    construction sector. Made with a team of 7 as part of a
+                    school project in collaboration with Bouvet.
+                  </p>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-icon"
+                    aria-label="View Project 4 on GitHub"
+                    style="visibility: hidden"
+                  >
+                    <img src="icons/github.svg" alt="" />
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-demo"
+                    style="visibility: hidden"
+                  >
+                    <span>Live Demo</span>
+                    <img src="icons/external-link.svg" alt="" />
+                  </a>
+                </div>
               </div>
-              <div class="project-content">
-                <h3 class="project-title">CO₂ Calculator</h3>
-                <p
-                  class="project-description"
-                  data-i18n="projects.project4.description"
-                >
-                  CO₂ calculator for subcontractors in the norwegian construction sector. Made with a team of 7 as part of a school project in collaboration with Bouvet.
-                </p>
-              </div>
-              <div class="project-links">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-icon"
-                  aria-label="View Project 4 on GitHub"
-                  style="visibility: hidden;"
-                >
-                  <img src="icons/github.svg" alt="" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-demo"
-                  style="visibility: hidden;"
-                >
-                  <span>Live Demo</span>
-                  <img src="icons/external-link.svg" alt="" />
-                </a>
-              </div>
-            </div>
 
-            <div class="project-card">
-              <div class="project-image project-image--placeholder">
-                <!-- <img
+              <div class="project-card">
+                <div class="project-image project-image--placeholder">
+                  <!-- <img
                   src="img/placeholder.png"
                   alt="Project 5 screenshot"
-                  loading="lazy"
+                  
                   width="400"
                   height="250"
                 /> -->
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Untitled Game</h3>
+                  <p
+                    class="project-description"
+                    data-i18n="projects.project5.description"
+                  >
+                    2D online multiplayer gun-dueling game for android. Made
+                    using Java and libGDX.
+                  </p>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-icon"
+                    aria-label="View Project 5 on GitHub"
+                    style="visibility: hidden"
+                  >
+                    <img src="icons/github.svg" alt="" />
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-demo"
+                    style="visibility: hidden"
+                  >
+                    <span>Live Demo</span>
+                    <img src="icons/external-link.svg" alt="" />
+                  </a>
+                </div>
               </div>
-              <div class="project-content">
-                <h3 class="project-title">DuelMasters</h3>
-                <p
-                  class="project-description"
-                  data-i18n="projects.project5.description"
-                >
-                  2D online multiplayer gun-dueling game for android. Made using Java and libGDX.
-                </p>
-              </div>
-              <div class="project-links">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-icon"
-                  aria-label="View Project 5 on GitHub"
-                  style="visibility: hidden;"
-                >
-                  <img src="icons/github.svg" alt="" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-demo"
-                  style="visibility: hidden;"
-                >
-                  <span>Live Demo</span>
-                  <img src="icons/external-link.svg" alt="" />
-                </a>
-              </div>
-            </div>
 
-            <div class="project-card">
-              <div class="project-image">
-                <picture>
-                  <source srcset="img/portfolio.webp" type="image/webp">
-                  <img
-                    src="img/portfolio.png"
-                    alt="Portfolio screenshot"
-                    loading="lazy"
-                    width="400"
-                    height="250"
-                  />
-                </picture>
-              </div>
-              <div class="project-content">
-                <h3 class="project-title">This Portfolio</h3>
-                <p
-                  class="project-description"
-                  data-i18n="projects.project6.description"
-                >
-                  Responsive portfolio website with dark mode, bilingual support (EN/NO), and interactive project carousel. Built with vanilla JavaScript and CSS.
-                </p>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://ksterud.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link-icon"
-                  aria-label="View Portfolio on GitHub"
-                >
-                  <img src="icons/github.svg" alt="" />
-                </a>
-                <a
-                  href="."
-                  class="project-link-demo"
-                >
-                  <span>Live Demo</span>
-                  <img src="icons/external-link.svg" alt="" />
-                </a>
+              <div class="project-card">
+                <div class="project-image">
+                  <picture>
+                    <source srcset="img/portfolio.webp" type="image/webp" />
+                    <img
+                      src="img/portfolio.png"
+                      alt="Portfolio screenshot"
+                      width="400"
+                      height="250"
+                    />
+                  </picture>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">This Portfolio</h3>
+                  <p
+                    class="project-description"
+                    data-i18n="projects.project6.description"
+                  >
+                    Responsive portfolio website with dark mode, bilingual
+                    support (EN/NO), and interactive project carousel. Built
+                    with vanilla JavaScript and CSS.
+                  </p>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/kristtst01/portfolio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link-icon"
+                    aria-label="View Portfolio on GitHub"
+                  >
+                    <img src="icons/github.svg" alt="" />
+                  </a>
+                  <a href="." class="project-link-demo">
+                    <span>Live Demo</span>
+                    <img src="icons/external-link.svg" alt="" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
           </div>
           <div class="project-pagination">
             <span class="pagination-counter">1 / 6</span>
@@ -331,7 +361,11 @@
           <h2 class="section-title" data-i18n="about.title">About</h2>
 
           <p class="about-intro" data-i18n="about.intro">
-            Final-year informatics student at NTNU. I build web applications with focus on intuitive interfaces and clean system design. I've made projects ranging from Pokemon clicker games to recipe platforms. Currently seeking my first developer role. When I'm not coding, I play classical piano at an advanced level.
+            Final-year informatics student at NTNU. I build web applications
+            with focus on intuitive interfaces and clean system design. I've
+            made projects ranging from Pokemon clicker games to recipe
+            platforms. Currently seeking my first developer role. When I'm not
+            coding, I play classical piano at an advanced level.
           </p>
 
           <div class="about-content">
@@ -340,7 +374,8 @@
                 Education
               </h3>
               <p class="about-value" data-i18n="about.education.value">
-                Bachelor in Informatics, NTNU<br />Graduating Spring 2026 (Current GPA: 4.3/5.0)
+                Bachelor in Informatics, NTNU<br />Graduating Spring 2026
+                (Current GPA: 4.3/5.0)
               </p>
             </div>
 
